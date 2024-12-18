@@ -1,5 +1,5 @@
 {
-  "name": "@capgo/inappbrowser",
+  "name": "@wyrdmantis/inappbrowser",
   "version": "6.9.26",
   "description": "Capacitor plugin in app browser",
   "main": "dist/plugin.cjs.js",
@@ -13,14 +13,14 @@
     "ios/Plugin/",
     "CapgoInappbrowser.podspec"
   ],
-  "author": "Martin Donadieu",
+  "author": "Gabriele Zurla",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cap-go/capacitor-inappbrowser.git"
+    "url": "git+https://github.com/wyrdmantis/capacitor-inappbrowser.git"
   },
   "bugs": {
-    "url": "https://github.com/Cap-go/capacitor-inappbrowser/issues"
+    "url": "https://github.com/wyrdmantis/capacitor-inappbrowser/issues"
   },
   "keywords": [
     "capacitor",
