@@ -321,21 +321,21 @@ open class WKWebViewController: UIViewController, WKScriptMessageHandler, UIScro
         }
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.url), options: .new, context: nil)
         //        NotificationCenter.default.addObserver(self, selector: #selector(restateViewHeight), name: UIDevice.orientationDidChangeNotification, object: nil)
-      if #available(iOS 13.0, *) {
-          let CUSTOM_USER_AGENT: String = "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1"
-          webView.customUserAgent = CUSTOM_USER_AGENT
-      }
+        if #available(iOS 13.0, *) {
+            let CUSTOM_USER_AGENT: String = "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1"
+            webView.customUserAgent = CUSTOM_USER_AGENT
+        }
 
-      webView.backgroundColor = .white
-      webView.navigationDelegate = self;
+        webView.backgroundColor = .white
+        webView.navigationDelegate = self;
 
-      //view.addSubview(webView)
+        //view.addSubview(webView)
 
-      webView.scrollView.delegate = self
-      webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.scrollView.delegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
 
-      self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[webView]-0-|", metrics: nil, views: ["webView": webView]))
-      self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[webView]-0-|", metrics: nil, views: ["webView": webView]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[webView]-0-|", metrics: nil, views: ["webView": webView]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[webView]-0-|", metrics: nil, views: ["webView": webView]))
 
 
         self.view = webView
