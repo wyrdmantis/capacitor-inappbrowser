@@ -43,7 +43,7 @@ extension Dictionary {
     }
 }
 
-open class WKWebViewController: UIViewController, WKScriptMessageHandler {
+open class WKWebViewController: UIViewController, WKScriptMessageHandler, UIScrollViewDelegate {
 
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -293,6 +293,7 @@ open class WKWebViewController: UIViewController, WKScriptMessageHandler {
 
         self.extendedLayoutIncludesOpaqueBars = true
         self.edgesForExtendedLayout = [.bottom]
+        let DEV_EXTRA_KEY: String = "developerExtrasEnabled"
 
         let webConfiguration = WKWebViewConfiguration()
         let userContentController = WKUserContentController()
@@ -300,6 +301,7 @@ open class WKWebViewController: UIViewController, WKScriptMessageHandler {
         userContentController.add(self, name: "preShowScriptError")
         userContentController.add(self, name: "preShowScriptSuccess")
         webConfiguration.userContentController = userContentController
+        webConfiguration.preferences.setValue(true, forKey: DEV_EXTRA_KEY)
         let webView = WKWebView(frame: .zero, configuration: webConfiguration)
 
         if webView.responds(to: Selector(("setInspectable:"))) {
@@ -319,11 +321,27 @@ open class WKWebViewController: UIViewController, WKScriptMessageHandler {
         }
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.url), options: .new, context: nil)
         //        NotificationCenter.default.addObserver(self, selector: #selector(restateViewHeight), name: UIDevice.orientationDidChangeNotification, object: nil)
+      if #available(iOS 13.0, *) {
+          let CUSTOM_USER_AGENT: String = "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1"
+          webView.customUserAgent = CUSTOM_USER_AGENT
+      }
+
+      webView.backgroundColor = .white
+      webView.navigationDelegate = self;
+
+      //view.addSubview(webView)
+
+      webView.scrollView.delegate = self
+      webView.translatesAutoresizingMaskIntoConstraints = false
+
+      self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[webView]-0-|", metrics: nil, views: ["webView": webView]))
+      self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[webView]-0-|", metrics: nil, views: ["webView": webView]))
+
 
         self.view = webView
         self.webView = webView
 
-        self.webView?.customUserAgent = self.customUserAgent ?? self.userAgent ?? self.originalUserAgent
+        //self.webView?.customUserAgent = self.customUserAgent ?? self.userAgent ?? self.originalUserAgent
 
         self.navigationItem.title = self.navigationItem.title ?? self.source?.absoluteString
 
