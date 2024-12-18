@@ -1,4 +1,4 @@
-# @wyrdmantis/inappbrowser
+# @gpigroup/inappbrowser
  <a href="https://capgo.app/"><img src='https://raw.githubusercontent.com/Cap-go/capgo/main/assets/capgo_banner.png' alt='Capgo - Instant updates for capacitor'/></a>
 
 <div align="center">
@@ -11,13 +11,13 @@ Capacitor plugin in app browser with urlChangeEvent
 ## Install
 
 ```bash
-npm install @wyrdmantis/inappbrowser
+npm install @gpigroup/inappbrowser
 npx cap sync
 ```
 ## Usage
 
 ```js
-import { InAppBrowser } from '@wyrdmantis/inappbrowser'
+import { InAppBrowser } from '@gpigroup/inappbrowser'
 
 InAppBrowser.open({ url: "YOUR_URL" });
 ```
@@ -626,7 +626,9 @@ Construct a type with the properties of T except for those in type K.
 
 From T, pick a set of properties whose keys are in the union K
 
-<code>{ [P in K]: T[P]; }</code>
+<code>{
+ [P in K]: T[P];
+ }</code>
 
 
 #### Exclude
@@ -640,7 +642,9 @@ From T, pick a set of properties whose keys are in the union K
 
 Construct a type with a set of properties K of type T
 
-<code>{ [P in K]: T; }</code>
+<code>{
+ [P in K]: T;
+ }</code>
 
 
 #### GetCookieOptions

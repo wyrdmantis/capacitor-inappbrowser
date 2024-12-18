@@ -1,5 +1,5 @@
 {
-  "name": "@wyrdmantis/inappbrowser",
+  "name": "@gpigroup/inappbrowser",
   "version": "6.9.26",
   "description": "Capacitor plugin in app browser",
   "main": "dist/plugin.cjs.js",
