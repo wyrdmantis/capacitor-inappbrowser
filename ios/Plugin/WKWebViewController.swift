@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WebKit
+@preconcurrency import WebKit
 
 private let estimatedProgressKeyPath = "estimatedProgress"
 private let titleKeyPath = "title"
@@ -329,16 +329,14 @@ open class WKWebViewController: UIViewController, WKScriptMessageHandler, UIScro
         webView.backgroundColor = .white
         webView.navigationDelegate = self;
 
-        //view.addSubview(webView)
-
         webView.scrollView.delegate = self
         webView.translatesAutoresizingMaskIntoConstraints = false
+
+        self.view.addSubview(webView)
 
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[webView]-0-|", metrics: nil, views: ["webView": webView]))
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[webView]-0-|", metrics: nil, views: ["webView": webView]))
 
-
-        self.view = webView
         self.webView = webView
 
         //self.webView?.customUserAgent = self.customUserAgent ?? self.userAgent ?? self.originalUserAgent
