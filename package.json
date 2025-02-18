@@ -13,7 +13,7 @@
     "ios/Plugin/",
     "GpigroupInappbrowser.podspec"
   ],
-  "author": "Gabriele Zurla",
+  "author": "Martin Donadieu",
   "license": "MIT",
   "repository": {
     "type": "git",
